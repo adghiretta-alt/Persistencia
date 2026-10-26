@@ -1,6 +1,7 @@
 package com.mohamedadghir.persistncia
 
 import android.os.Bundle
+import android.content.Context
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +16,12 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val filename = "myfile"
+        val fileContents = "Hello world!"
+
+        openFileOutput(filename, Context.MODE_APPEND).use {
+            it.write(fileContents.toByteArray())
         }
     }
 }
